@@ -2,6 +2,14 @@
 {% block content %}
 
     <div class="container my-3">
+    {% if messages %}
+        <div class="alert alert-danger my-3" role="alert">
+        {% for message in messages %}
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.message }}</li></ul>
+        {% endfor %}
+        </div>
+    {% endif %}
         <h2 class="border-bottom py-2">{{ question.subject }}</h2>
         <div class="row my-3">
             <div class="col-1">
@@ -155,11 +163,13 @@
             });
         });
         const recommend_btn = document.getElementsByClassName("recommend");
-        recommend_btn.addEventListener('click', function () {
-            if (confirm("정말로 추천하시겠습니까?")) {
-                location.href = this.dataset.uri;
-            }
-            ;
+       Array.from(recommend_btn).forEach(function (element) {
+            element.addEventListener('click', function () {
+                if (confirm("정말로 추천하시겠습니까?")) {
+                    location.href = this.dataset.uri;
+                }
+                ;
+            });
         });
 
     </script>
