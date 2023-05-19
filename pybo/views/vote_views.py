@@ -12,6 +12,13 @@ def vote_question(request, question_id):
     return redirect('pybo:detail', question_id=question.id)
 
 @login_required(login_url='common:login')
+def vote_cancel_question(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    question.voter.remove(request.user)
+    question.save()
+    return redirect('pybo:detail', question_id=question.id)
+
+@login_required(login_url='common:login')
 def vote_answer(request, answer_id):
     answer = get_object_or_404(Answer, pk=answer_id)
     if request.user == answer.author:
