@@ -1,5 +1,7 @@
 from django import forms
 from pybo.models import Question, Answer, Comment
+
+
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
@@ -9,6 +11,7 @@ class QuestionForm(forms.ModelForm):
             'content': '내용',
         }
 
+
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
@@ -17,8 +20,11 @@ class AnswerForm(forms.ModelForm):
             'contnet': '답변내용',
         }
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
-        labels = {'content': '댓글 내용',}
+        labels = {
+            'content': '댓글 내용',
+        }
