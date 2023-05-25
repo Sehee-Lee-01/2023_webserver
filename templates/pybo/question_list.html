@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
 {% block content %}
-
     <div class="container my-3">
-        <div class="row my-3">
+        <div class="row justify-content-between my-3">
+            <div class="col-2">
+                <select class="form-control so">
+                    <option value="recent" {% if so == 'recent' %}selected{% endif %}>
+                        최신순
+                    </option>
+                    <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>
+                        추천순
+                    </option>
+                    <option value="popular" {% if so == 'popular' %}selected{% endif %}>
+                        인기순
+                    </option>
+                </select>
+            </div>
             <div class="col-6">
                 <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="input-group">
                     <input type="text" id="search_kw" class="form-control" value="{{ kw|default_if_none:'' }}">
                     <div class="input-group-append">
@@ -102,6 +114,7 @@
     <form id="searchForm" method="get" action="{% url 'index' %}">
         <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
         <input type="hidden" id="page" name="page" value="{{ page }}">
+        <input type="hidden" id="so" name="so" value="{{ so }}">
     </form>
 {% endblock %}
 {% block script %}
@@ -116,6 +129,13 @@
         const btn_search = document.getElementById("btn_search");
         btn_search.addEventListener('click', function () {
             document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;
+            document.getElementById('searchForm').submit();
+        })
+        const so = document.getElementsByClassName("so");
+        so[0].addEventListener('change', function () {
+            document.getElementById("so").value = this.value;
+            console.log(document.getElementById("so").value);
             document.getElementById('page').value = 1;
             document.getElementById('searchForm').submit();
         })
