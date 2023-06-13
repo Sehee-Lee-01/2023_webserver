@@ -5,5 +5,5 @@ app_name = 'studentFbv'
 
 urlpatterns = [
     path('', views.student_list),
-    path('detail/<int:pk>/', views.student_detail),
+    path('<int:pk>/', views.student_detail),
 ]
