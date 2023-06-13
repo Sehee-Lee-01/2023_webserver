@@ -23,6 +23,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f4009ad8-d752-4270-8a1b-b57dd57bbff9" dataset="main.student_fbv_student" active-filter-id="EMPTY_FILTER">
+      <filter id="c440f46b-a7ca-4ecf-9972-3e75a08a4e9a" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="f4009ad8-d752-4270-8a1b-b57dd57bbff9" dataset="main.pybo_question_voter" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="f4009ad8-d752-4270-8a1b-b57dd57bbff9" dataset="main.django_admin_log" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">

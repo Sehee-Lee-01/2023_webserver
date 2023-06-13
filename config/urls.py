@@ -23,5 +23,6 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('studentFbv/', include('student_fbv.urls')),
     path('studentCbv/', include('student_cbv.urls')),
+    path('api_auth/', include('rest_framework.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path
 ]

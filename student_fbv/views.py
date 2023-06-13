@@ -6,7 +6,7 @@ from student_fbv.serializer import StudentSerializer
 
 
 @api_view(['GET', 'POST'])
-def student_list(request):
+def student_list(request, format=None):
     if request.method == 'GET':
         student = Student.objects.all()
         serializer = StudentSerializer(student, many=True)
@@ -20,7 +20,7 @@ def student_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def student_detail(request, pk):
+def student_detail(request, pk, format=None):
     try:
         student = Student.objects.get(pk=pk)
     except Student.DoesNotExist:
@@ -28,7 +28,7 @@ def student_detail(request, pk):
     if request.method == 'GET':
         serializer = StudentSerializer(student)
         return Response(serializer.data)
-    elif request.method == 'POST':
+    elif request.method == 'PUT':
         serializer = StudentSerializer(student, request.data)
         if serializer.is_valid():
             serializer.save()
