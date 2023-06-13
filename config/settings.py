@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
     'student_fbv.apps.StudentFbvConfig',
-    # 'student_cbv.apps.StudentCbvConfig'
+    'student_cbv.apps.StudentCbvConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
